@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="message">
+    <button id="send">Send</button>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+        let roomId=5;
+            // Join the room when the client connects
+// socket.on('connect', () => {
+//     socket.emit('joinRoom', roomId); // Emit joinRoom event with roomId
+// });
+
+        document.getElementById('send').addEventListener('click', () => {
+            const message = document.getElementById('message').value;
+            
+            // socket.emit('communicate', { roomId, message });        
+        });
+        socket.on('message', (message) => {
+    console.log('Received message:', message);
+    // Here you can update the UI to display the message
+});
+    </script>
+</body>
+</html>
